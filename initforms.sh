@@ -58,7 +58,7 @@ EOF
 
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "memcached", "201607", "databases/memcached", "service memcached restart" );
+INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "memcached", "201607", "databases/memcached", "memcached" );
 COMMIT;
 EOF
 
