@@ -65,10 +65,10 @@ EOF
 # long description
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-UPDATE system SET longdesc='\
-memcached is a high-performance, distributed memory object caching \
-system, generic in nature, but intended for use in speeding up dynamic \
-web applications by alleviating database load. \
+UPDATE system SET longdesc='\\
+memcached is a high-performance, distributed memory object caching \\
+system, generic in nature, but intended for use in speeding up dynamic \\
+web applications by alleviating database load. \\
 ';
 COMMIT;
 EOF
