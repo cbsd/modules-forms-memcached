@@ -35,15 +35,14 @@ FORM_PATH="${workdir}/formfile"
 # yesno
 /usr/local/bin/cbsd ${miscdir}/updatesql ${FORM_PATH}/${HELPER}.sqlite ${distsharedir}/forms_yesno.schema use_sasl_yesno
 
-
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,1,"tcp_port","tcp_port: default is 11211",'11211','','',1, "maxlen=60", "inputbox", "", "" );
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,2,"udp_port","udp_port: default is 11211",'11211','','',1, "maxlen=60", "inputbox", "", "" );
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,3,"max_connections","max_connections: default is 1024",'1024','','',1, "maxlen=60", "inputbox", "", "" );
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,4,"unix_socket","unix_socket path (/tmp/memcached.sock) or 'undef' to disable unix socket",'undef','','',1, "maxlen=60", "inputbox", "", "" );
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,5,"processorcount","processorcount: number of worker. 'undef' for sets to number of core",'undef','','',1, "maxlen=60", "inputbox", "", "" );
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,6,"use_sasl","Use SASL. Default is no SASL",'2','2','',1, "maxlen=60", "radio", "use_sasl_yesno", "" );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,1,'tcp_port','tcp_port: default is 11211','11211','','',1, 'maxlen=60', 'inputbox', '', '' );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,2,'udp_port','udp_port: default is 11211','11211','','',1, 'maxlen=60', 'inputbox', '', '' );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,3,'max_connections','max_connections: default is 1024','1024','','',1, 'maxlen=60', 'inputbox', '', '' );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,4,'unix_socket','unix_socket path (/tmp/memcached.sock) or 'undef' to disable unix socket','undef','','',1, 'maxlen=60', 'inputbox', '', '' );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,5,'processorcount','processorcount: number of worker. 'undef' for sets to number of core','undef','','',1, 'maxlen=60', 'inputbox', '', '' );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,6,'use_sasl','Use SASL. Default is no SASL','2','2','',1, 'maxlen=60', 'radio', 'use_sasl_yesno', '' );
 COMMIT;
 EOF
 
@@ -51,14 +50,14 @@ EOF
 # Put boolean for use_sasl_yesno
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO use_sasl_yesno ( text, order_id ) VALUES ( "yes", 1 );
-INSERT INTO use_sasl_yesno ( text, order_id ) VALUES ( "no", 0 );
+INSERT INTO use_sasl_yesno ( text, order_id ) VALUES ( 'yes', 1 );
+INSERT INTO use_sasl_yesno ( text, order_id ) VALUES ( 'no', 0 );
 COMMIT;
 EOF
 
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "memcached", "201607", "databases/memcached", "memcached" );
+INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( 'memcached', '201607', 'databases/memcached', 'memcached' );
 COMMIT;
 EOF
 
